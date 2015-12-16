@@ -28,7 +28,7 @@ use Symfony\Component\Console\Command\Command;
 /**
  * @method PropelConfig getConfig()
  */
-class PropelDependencyContainer extends AbstractBusinessFactory
+class PropelBusinessFactory extends AbstractBusinessFactory
 {
 
     /**

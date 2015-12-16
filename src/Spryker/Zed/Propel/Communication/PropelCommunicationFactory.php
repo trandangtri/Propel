@@ -14,7 +14,7 @@ use Spryker\Zed\Propel\PropelConfig;
 /**
  * @method PropelConfig getConfig()
  */
-class PropelDependencyContainer extends AbstractCommunicationFactory
+class PropelCommunicationFactory extends AbstractCommunicationFactory
 {
 
     const LOGGER_NAME = 'defaultLogger';
