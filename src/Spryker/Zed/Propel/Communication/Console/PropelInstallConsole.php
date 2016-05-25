@@ -85,7 +85,7 @@ class PropelInstallConsole extends Console
 
         $dependingCommands = [
             ConvertConfigConsole::COMMAND_NAME,
-            CreateDatabaseConsole::COMMAND_NAME,
+            // CreateDatabaseConsole::COMMAND_NAME,
             PostgresqlCompatibilityConsole::COMMAND_NAME,
             SchemaCopyConsole::COMMAND_NAME,
             BuildModelConsole::COMMAND_NAME,
