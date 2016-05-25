@@ -59,8 +59,11 @@ class PostgreSqlDatabaseCreator implements DatabaseCreatorInterface
     protected function getExistsCommand()
     {
         return sprintf(
-            'psql -U %s -lqt | cut -d \| -f 1 | grep -w %s | wc -l',
-            'postgres',
+            'PGPASSWORD=%s psql -h %s -p %s -U %s -lqt | cut -d \| -f 1 | grep -w %s | wc -l',
+            Config::get(PropelConstants::ZED_DB_PASSWORD),
+            Config::get(PropelConstants::ZED_DB_HOST),
+            Config::get(PropelConstants::ZED_DB_PORT),
+            Config::get(PropelConstants::ZED_DB_USERNAME),
             Config::get(PropelConstants::ZED_DB_DATABASE)
         );
     }
@@ -71,8 +74,11 @@ class PostgreSqlDatabaseCreator implements DatabaseCreatorInterface
     protected function getCreateCommand()
     {
         return sprintf(
-            'psql -U %s -w  -c "CREATE DATABASE \"%s\" WITH ENCODING=\'UTF8\' LC_COLLATE=\'en_US.UTF-8\' LC_CTYPE=\'en_US.UTF-8\' CONNECTION LIMIT=-1 TEMPLATE=\"template0\"; "',
-            'postgres',
+            'PGPASSWORD=%s psql -h %s -p %s -U %s -w -c "CREATE DATABASE \"%s\" WITH ENCODING=\'UTF8\' LC_COLLATE=\'en_US.UTF-8\' LC_CTYPE=\'en_US.UTF-8\' CONNECTION LIMIT=-1 TEMPLATE=\"template0\"; "',
+            Config::get(PropelConstants::ZED_DB_PASSWORD),
+            Config::get(PropelConstants::ZED_DB_HOST),
+            Config::get(PropelConstants::ZED_DB_PORT),
+            Config::get(PropelConstants::ZED_DB_USERNAME),
             Config::get(PropelConstants::ZED_DB_DATABASE)
         );
     }
